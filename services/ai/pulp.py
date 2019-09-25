@@ -4,9 +4,13 @@
 from qiniu import QiniuMacAuth
 from qiniu import http
 import json
+from configobj import ConfigObj
 
-access_key = '2-4Tf_7Gaa91wtpGGHCZF6C3Dp1xZbzvnhGw6NDJ'
-secret_key = 'HR6hVM8AVIaF_4PGEVrSTq92H-D9Q41yfDV2HfvZ'
+config = ConfigObj("../../.config.ini", encoding='UTF8')
+# 读配置文件
+access_key = config['account']['access_key']
+secret_key = config['account']['secret_key']
+
 q_auth = QiniuMacAuth(access_key, secret_key)
 data_json = "{\"data\":{\"uri\":\"http://7xlv47.com1.z0.glb.clouddn.com/pulpsexy.jpg\"}" + "}"
 url = "http://argus.atlab.ai/v1/pulp"
